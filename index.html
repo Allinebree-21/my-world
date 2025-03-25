@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+    <title>Login</title>
+    <style>
+        body 
+        {
+            text-align: center; 
+            background-image: url(c.jpg); 
+            background-repeat: no-repeat; 
+            background-size: cover; 
+        }
+
+        form 
+        {
+            display: inline-block; 
+            text-align: left; 
+        }
+
+        fieldset 
+        {
+            border: 2px solid black; 
+            border-radius: 5px; 
+            padding: 10px;
+        }
+
+        legend 
+        {
+            font-weight: bold; 
+        }
+
+        input[type="submit"] 
+        {
+            display: block; 
+            margin: 0 auto; 
+        }
+    
+    </style>
+    <script>
+        function login(name) 
+           {
+            var check = /^[A-Za-z]+$/;
+            if (name.value.match(check)) {
+                return true;
+            } else {
+                alert("Please enter letters only.");
+                return false;
+            }
+        }
+             
+        function validatePassword() 
+        {  
+            var password = document.myform.password.value;
+
+            /*
+^ → Start of the string.
+(?=.*\d) → Ensures there is at least one digit (0-9).
+(?=.*[a-z]) → Ensures there is at least one lowercase letter (a-z).
+(?=.*[A-Z]) → Ensures there is at least one uppercase letter (A-Z).
+(?=.[!@#$%^&()_+\-=\[\]{};':"\\|,.<>\/?]) → Ensures there is at least one special character (any from the listed set).
+.{8,} → Ensures the password is at least 8 characters long.
+$ → End of the string.
+*/
+            var passwordRegex = /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+            if (!passwordRegex.test(password)) {
+                alert("Password must contain at least one number, one uppercase letter, one lowercase letter, one special character, and be at least 8 characters long");
+                return false;
+            }
+
+            return true;  
+        }  
+
+          function validateemail()  
+        {  
+            var x = document.index.email.value;  
+            var atposition = x.indexOf("@"); 
+            var dotposition = x.lastIndexOf("."); 
+           
+            if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= x.length)
+            {  
+                alert("Please enter a valid e-mail address");  
+                return false;  
+            }  
+            
+        }  
+
+    </script>
+</head>
+<body bgcolor="lightgreen">
+    <form name="Login">
+        <fieldset>
+           
+            <legend>Login:</legend>
+           <br> Name <input type='text' name='name' value="Bridgith Majune"/><br />
+           <br> Password: <input type="password" name="password" value="Kai2023"><br> 
+            <br>Email: <input type="text" name="email" value="bridgitmajune@gmail.com"><br/> 
+            <input type="submit" name="submit" value="Submit" onclick="return validate(document.index.name)" />
+            
+          
+        </fieldset>
+    </form>
+</body>
+</html>
